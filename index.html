@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>X Wedlify | Undangan Pernikahan Digital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --card:#f8fafc;
+  --primary:#3aaeff;
+  --primary-soft:#eaf5ff;
+  --border:#e5e7eb;
+  --soft:#f4f7fb;
+  --dark:#020617;
+  --radius:22px;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+}
+
+/* ================= NAVBAR ================= */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(12px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 24px;
+  border-bottom:1px solid var(--border);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+}
+
+.logo{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 6px 16px rgba(0,0,0,.18);
+}
+
+.logo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* ================= BUTTON ================= */
+.btn{
+  background:linear-gradient(135deg,var(--primary),#7bb9ff);
+  color:#fff;
+  padding:14px 32px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:600;
+  display:inline-block;
+  box-shadow:0 14px 35px rgba(58,174,255,.35);
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn.small{
+  padding:9px 20px;
+  font-size:14px;
+}
+
+.btn.outline{
+  background:transparent;
+  color:var(--primary);
+  border:2px solid var(--primary);
+  box-shadow:none;
+}
+
+/* ================= HERO ================= */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:0 20px;
+  background:
+    radial-gradient(circle at top,var(--primary-soft),transparent 55%),
+    #ffffff;
+}
+
+.hero h1{
+  font-size:44px;
+  max-width:760px;
+  line-height:1.2;
+}
+
+.hero p{
+  max-width:620px;
+  margin:18px 0 36px;
+  color:var(--muted);
+  font-size:16px;
+}
+
+/* ================= SECTION BASE ================= */
+section{
+  padding:100px 20px;
+}
+
+section h2{
+  font-size:32px;
+  margin-bottom:12px;
+}
+
+section p.section-desc{
+  max-width:700px;
+  margin:0 auto 48px;
+  color:var(--muted);
+  font-size:16px;
+}
+
+/* ================= FEATURES ================= */
+.features{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:24px;
+}
+
+.card{
+  background:var(--card);
+  padding:34px;
+  border-radius:var(--radius);
+  text-align:center;
+  box-shadow:0 18px 50px rgba(0,0,0,.06);
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.card p{
+  font-size:15px;
+  color:var(--muted);
+}
+
+/* ================= DEMO ================= */
+.demo{
+  text-align:center;
+  background:var(--soft);
+}
+
+/* ================= PRICING ================= */
+.pricing{
+  text-align:center;
+}
+
+.price-grid{
+  margin-top:50px;
+  max-width:1000px;
+  margin-inline:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:26px;
+}
+
+.price-card{
+  background:var(--card);
+  padding:38px;
+  border-radius:var(--radius);
+  position:relative;
+  box-shadow:0 18px 50px rgba(0,0,0,.06);
+}
+
+.price-card h3{
+  font-size:20px;
+}
+
+.price{
+  font-size:34px;
+  font-weight:700;
+  margin:14px 0;
+}
+
+.price-card ul{
+  list-style:none;
+  margin:24px 0;
+  text-align:left;
+}
+
+.price-card ul li{
+  padding:6px 0;
+  font-size:14px;
+  color:var(--muted);
+}
+
+.best{
+  border:2px solid var(--primary);
+  transform:scale(1.05);
+}
+
+.badge{
+  position:absolute;
+  top:-14px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--primary);
+  color:#fff;
+  padding:6px 16px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+}
+
+/* ================= CTA ================= */
+.cta-section{
+  background:linear-gradient(135deg,#0f172a,#020617);
+  color:#fff;
+  text-align:center;
+}
+
+.cta-section h2{
+  font-size:34px;
+}
+
+.cta-section p{
+  opacity:.85;
+  margin:14px 0 36px;
+}
+
+/* ================= FAQ ================= */
+.faq{
+  max-width:900px;
+  margin:auto;
+  text-align:center;
+}
+
+.faq-desc{
+  color:var(--muted);
+  margin-bottom:40px;
+}
+
+.faq-list{
+  text-align:left;
+}
+
+.faq-item{
+  background:#fff;
+  padding:26px;
+  border-radius:18px;
+  margin-bottom:18px;
+  box-shadow:0 14px 40px rgba(0,0,0,.06);
+}
+
+.faq-item h4{
+  margin-bottom:8px;
+  font-size:16px;
+}
+
+.faq-item p{
+  font-size:14px;
+  color:var(--muted);
+}
+
+/* ================= FOOTER ================= */
+footer{
+  text-align:center;
+  padding:30px;
+  color:var(--muted);
+  background:#f9fafb;
+}
+
+/* ================= ANIMATION ================= */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all .8s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:none;
+}
+
+/* ================= STICKY WA ================= */
+.wa-sticky{
+  position:fixed;
+  bottom:16px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#25d366;
+  color:white;
+  padding:7px 16px;
+  border-radius:999px;
+  font-weight:500;
+  text-decoration:none;
+  box-shadow:0 14px 40px rgba(0,0,0,.35);
+  z-index:999;
+}
+
+@media (min-width:769px){
+  .wa-sticky{display:none}
+}
+
+/* ================= MOBILE ================= */
+@media (max-width:768px){
+  section{padding:80px 18px}
+
+  .hero h1{font-size:30px}
+  .hero p{font-size:14px}
+
+  .best{transform:none}
+}
+
+/* ================= DARK MODE ================= */
+body.dark{
+  --bg:#020617;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --card:#020617;
+  --soft:#020617;
+  --border:#1e293b;
+}
+
+body.dark .nav{
+  background:rgba(2,6,23,.85);
+}
+
+body.dark .card,
+body.dark .price-card,
+body.dark .faq-item{
+  background:#020617;
+  box-shadow:0 18px 50px rgba(0,0,0,.45);
+}
+
+body.dark footer{
+  background:#020617;
+}
+
+.dark-toggle{
+  cursor:pointer;
+  border:none;
+}
+
+/* ================= HERO DARK MODE FIX ================= */
+body.dark .hero{
+  background:
+    radial-gradient(circle at top, rgba(58,174,255,.15), transparent 55%),
+    linear-gradient(180deg,#020617,#020617);
+}
+
+body, .hero, .card, .price-card, .faq-item{
+  transition:background .35s ease, color .35s ease;
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="nav">
+  <div class="brand">
+    <div class="logo">
+      <img src="logo.jpg" alt="X Wedlify">
+    </div>
+    <span>X Wedlify</span>
+  </div>
+
+  <button class="btn small dark-toggle" id="darkToggle" aria-label="Toggle Dark Mode">
+    🌙
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero reveal">
+  <h1>
+    Undangan Pernikahan Digital<br>
+    Elegan, Praktis & Kekinian
+  </h1>
+  <p>
+    Tidak perlu cetak, tidak ribet, dan bisa dibuka di semua HP.  
+    Bagikan momen bahagia Anda cukup dengan satu link undangan digital
+    yang tampil modern dan berkesan.
+  </p>
+
+  <a href="https://wa.me/6285846005280" class="btn">
+    📲 Konsultasi Gratis Sekarang
+  </a>
+</section>
+
+<section class="why-digital reveal">
+  <h2>Kenapa Harus Undangan Digital?</h2>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <h4>📱 Praktis & Cepat</h4>
+      <p>Undangan bisa langsung dibagikan ke tamu hanya dengan satu link.</p>
+    </div>
+    <div class="why-card">
+      <h4>💸 Lebih Hemat</h4>
+      <p>Tidak perlu cetak undangan fisik dan biaya pengiriman.</p>
+    </div>
+    <div class="why-card">
+      <h4>🌿 Ramah Lingkungan</h4>
+      <p>Mengurangi penggunaan kertas dan limbah cetak.</p>
+    </div>
+    <div class="why-card">
+      <h4>✨ Lebih Modern</h4>
+      <p>Tampilan elegan dengan animasi, musik, dan fitur interaktif.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features reveal">
+  <div class="card">
+    <h3>💌 Praktis & Efisien</h3>
+    <p>
+      Kirim undangan ke ratusan tamu hanya dengan satu link,
+      tanpa biaya cetak dan tanpa repot distribusi.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>📱 Modern & Responsif</h3>
+    <p>
+      Undangan dapat dibuka dengan lancar di semua perangkat,
+      baik Android, iPhone, maupun desktop.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>✨ Elegan & Berkesan</h3>
+    <p>
+      Desain eksklusif dengan animasi halus yang membuat
+      momen pernikahan terasa lebih istimewa.
+    </p>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="demo reveal">
+  <h2>Lihat Contoh Undangan Digital</h2>
+  <p class="section-desc">
+    Ini adalah contoh tampilan undangan digital dari X Wedlify.
+    Desain akan disesuaikan dengan data, tema, dan keinginan Anda.
+  </p>
+
+  <a href="demo-undangan/index.html" class="btn outline">
+    🔗 Lihat Demo Undangan
+  </a>
+</section>
+
+<!-- PRICING -->
+<section class="pricing reveal" id="pricing">
+  <h2>Paket Undangan Pernikahan Digital</h2>
+  <p class="pricing-desc">
+    Pilih paket yang sesuai dengan kebutuhan pernikahan Anda.
+    Semua undangan dapat dibuka di berbagai perangkat dan mudah dibagikan.
+  </p>
+
+  <div class="price-grid">
+
+    <!-- GRATIS -->
+    <div class="price-card">
+      <h4>Basic</h4>
+      <p class="price">Hanya</p>
+      <p class="subtitle">29K</p>
+
+      <ul>
+        <li>Template dasar</li>
+        <li>1 halaman undangan</li>
+        <li>Detail acara</li>
+        <li>Link undangan aktif</li>
+        <li>Mobile friendly</li>
+      </ul>
+
+      <button class="btn small" onclick="orderWA('Basic')">
+        Pilih Basic
+      </button>
+    </div>
+
+    <!-- STANDAR -->
+    <div class="price-card">
+      <h4>Standar</h4>
+      <p class="price">49K</p>
+
+      <ul>
+        <li>Desain elegan</li>
+        <li>Detail acara lengkap</li>
+        <li>Galeri foto</li>
+        <li>Google Maps lokasi</li>
+        <li>Revisi 1×</li>
+        <li>Link aktif selamanya</li>
+      </ul>
+
+      <button class="btn small" onclick="orderWA('Standar')">
+        Pilih Standar
+      </button>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="price-card">
+      <h4>Premium</h4>
+      <p class="price">79K</p>
+
+      <ul>
+        <li>Semua fitur Paket Standar</li>
+        <li>Animasi halus</li>
+        <li>Musik latar</li>
+        <li>RSVP via WhatsApp</li>
+        <li>Nama tamu otomatis</li>
+        <li>Revisi hingga 2×</li>
+      </ul>
+
+      <button class="btn small" onclick="orderWA('Premium')">
+        Pilih Premium
+      </button>
+    </div>
+
+    <!-- EXCLUSIVE -->
+    <div class="price-card best">
+      <span class="badge">TERLARIS</span>
+      <h4>Exclusive</h4>
+      <p class="price">129K</p>
+
+      <ul>
+        <li>Semua fitur Paket Premium</li>
+        <li>Desain custom eksklusif</li>
+        <li>Amplop digital (QRIS / Rekening)</li>
+        <li>Animasi premium</li>
+        <li>Request warna & konsep</li>
+        <li>Revisi fleksibel</li>
+        <li>Prioritas pengerjaan</li>
+      </ul>
+
+      <button class="btn small" onclick="orderWA('Exclusive')">
+        🔥 Pilih Exclusive
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<section class="pricing reveal">
+  <h2>Perbandingan Paket Undangan</h2>
+  <p class="section-desc">
+    Pilih paket yang sesuai dengan kebutuhan Anda.
+    Semua paket dibuat dengan tampilan profesional dan rapi.
+  </p>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Fitur</th>
+          <th>Basic</th>
+          <th>Standar</th>
+          <th>Premium</th>
+          <th class="best-col">Exclusive</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Link Undangan</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td class="best-col">✔</td>
+        </tr>
+        <tr>
+          <td>Nama Tamu Personal</td>
+          <td>✖</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td class="best-col">✔</td>
+        </tr>
+        <tr>
+          <td>Galeri Foto</td>
+          <td>✖</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td class="best-col">✔</td>
+        </tr>
+        <tr>
+          <td>Countdown Acara</td>
+          <td>✖</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td class="best-col">✔</td>
+        </tr>
+        <tr>
+          <td>RSVP WhatsApp</td>
+          <td>✖</td>
+          <td>✔</td>
+          <td>✔</td>
+          <td class="best-col">✔</td>
+        </tr>
+        <tr>
+          <td>Amplop Digital / QRIS</td>
+          <td>✖</td>
+          <td>✖</td>
+          <td>✔</td>
+          <td class="best-col">✔</td>
+        </tr>
+        <tr>
+          <td>Custom Desain</td>
+          <td>✖</td>
+          <td>✖</td>
+          <td>Terbatas</td>
+          <td class="best-col">Full Custom</td>
+        </tr>
+        <tr>
+          <td>Revisi</td>
+          <td>1x</td>
+          <td>2x</td>
+          <td>3x</td>
+          <td class="best-col">Bebas</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="features reveal" id="testimoni">
+  <div style="grid-column:1/-1;text-align:center">
+    <h2>Apa Kata Mereka?</h2>
+    <p class="faq-desc">
+      Beberapa pasangan yang telah mempercayakan undangan digitalnya
+      kepada X Wedlify.
+    </p>
+  </div>
+
+  <div class="card">
+    <p>
+      “Awalnya ragu pakai undangan digital, tapi hasilnya di luar ekspektasi.
+      Tampilannya elegan, gampang dibagikan, dan tamu banyak yang bilang
+      undangannya bagus.”
+    </p>
+    <strong>— Rina & Andi</strong><br>
+    <small>Paket Premium</small>
+  </div>
+
+  <div class="card">
+    <p>
+      “Fast respon dan sabar banget revisinya. Saya tinggal kirim data,
+      langsung jadi undangan yang rapi dan profesional.”
+    </p>
+    <strong>— Siti & Fajar</strong><br>
+    <small>Paket Exclusive</small>
+  </div>
+
+  <div class="card">
+    <p>
+      “Praktis banget, gak perlu cetak undangan. Tinggal share link ke WA keluarga
+      dan teman. Hemat waktu dan biaya.”
+    </p>
+    <strong>— Dwi & Rizky</strong><br>
+    <small>Paket Standar</small>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq reveal" id="faq">
+  <h2>Pertanyaan yang Sering Ditanyakan</h2>
+  <p class="faq-desc">
+    Masih ragu? Temukan jawaban dari pertanyaan yang paling sering
+    ditanyakan calon pengantin.
+  </p>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <h4>Apakah undangan bisa dibuka di semua HP?</h4>
+      <p>
+        Ya. Undangan digital X Wedlify bersifat responsif dan dapat dibuka
+        di Android, iPhone, maupun laptop tanpa aplikasi tambahan.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Berapa lama proses pembuatan undangan?</h4>
+      <p>
+        Rata-rata 1–3 hari kerja setelah data lengkap dikirim.
+        Untuk paket Exclusive, proses bisa lebih cepat.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Apakah bisa revisi desain?</h4>
+      <p>
+        Bisa. Jumlah revisi menyesuaikan paket yang dipilih.
+        Paket Exclusive mendapatkan revisi lebih fleksibel.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Bagaimana cara mengirim undangannya?</h4>
+      <p>
+        Cukup bagikan link undangan melalui WhatsApp, Instagram,
+        atau media sosial lainnya. Bisa juga dengan nama tamu personal.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Apakah ada fitur amplop digital?</h4>
+      <p>
+        Ada, khusus paket Premium dan Exclusive.
+        Tersedia informasi rekening dan QRIS yang tampil rapi.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Kalau belum punya data lengkap, bisa konsultasi dulu?</h4>
+      <p>
+        Tentu. Kamu bisa konsultasi gratis via WhatsApp sebelum memesan
+        untuk menentukan paket yang paling sesuai.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="checklist reveal">
+  <h2>Data yang Perlu Disiapkan</h2>
+  <ul>
+    <li>Nama lengkap pengantin</li>
+    <li>Tanggal & waktu acara</li>
+    <li>Alamat & lokasi Google Maps</li>
+    <li>Foto pengantin (opsional)</li>
+    <li>Nama orang tua</li>
+    <li>Rekening / QRIS (jika ada)</li>
+  </ul>
+</section>
+
+<!-- CTA -->
+<section class="cta-section reveal">
+  <h2>Siap Membuat Undangan Pernikahan Digital Anda?</h2>
+  <p>
+    Wujudkan undangan pernikahan yang modern, praktis,
+    dan mudah dibagikan ke seluruh tamu tanpa ribet.
+  </p>
+
+  <a href="https://wa.me/6285846005280" class="btn">
+    💬 Pesan Undangan Sekarang
+  </a>
+</section>
+
+<footer>
+  © 2026 X Wedlify — Undangan Pernikahan Digital
+</footer>
+
+<!-- FLOATING WA (MOBILE) -->
+<a href="https://wa.me/6285846005280" class="wa-sticky">
+  💬 Chat WhatsApp
+</a>
+
+<script>
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll(){
+  reveals.forEach(el=>{
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+
+    if(elementTop < windowHeight - 120){
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+
+function orderWA(paket){
+const pesan = `Halo kak 👋
+Saya tertarik dengan Paket ${paket} Undangan Pernikahan Digital di X Wedlify.
+Mohon info detail dan langkah pemesanannya ya kak 🙏`;
+
+  const url = "https://wa.me/6285846005280?text=" + encodeURIComponent(pesan);
+  window.open(url, "_blank");
+}
+
+/* ================= DARK MODE ================= */
+const toggle = document.getElementById("darkToggle");
+const body = document.body;
+
+// cek preferensi sebelumnya
+if(localStorage.getItem("theme") === "dark"){
+  body.classList.add("dark");
+  toggle.textContent = "☀️";
+}
+
+toggle.addEventListener("click", ()=>{
+  body.classList.toggle("dark");
+
+  if(body.classList.contains("dark")){
+    toggle.textContent = "☀️";
+    localStorage.setItem("theme","dark");
+  }else{
+    toggle.textContent = "🌙";
+    localStorage.setItem("theme","light");
+  }
+});
+</script>
+</body>
+</html>
